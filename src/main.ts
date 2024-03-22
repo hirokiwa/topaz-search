@@ -16,18 +16,18 @@ export const createUrl = (searchWord: string) => {
 const selectQuery = {
   input: (selector: string) => {
     try {
-      return document.querySelector<HTMLInputElement>(selector);
+      return document.querySelector<HTMLInputElement>(selector) ?? undefined;
     } catch (e) {
       console.error(e, "Faild to select query");
-      return null;
+      return undefined;
     }
   },
   button: (selector: string) => {
     try {
-      return document.querySelector<HTMLButtonElement>(selector);
+      return document.querySelector<HTMLButtonElement>(selector) ?? undefined;
     } catch (e) {
       console.error(e, "Faild to select query");
-      return null;
+      return undefined;
     }
   },
 }
