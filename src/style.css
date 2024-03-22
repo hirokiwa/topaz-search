@@ -14,12 +14,19 @@
 }
 
 .searchInput {
-  padding: 1em 2em;
+  padding: 1em 3em;
   border: none;
   border-radius: 50vmin;
   box-shadow: 0px 0px 3px #787878;
 }
 .searchForm {
+  position:relative;
+}
+
+.material-symbols-outlined {
+  position:absolute;
+  top: 50%;
+  transform:translateY(-50%) translateX(50%);
 }
 
 a {
