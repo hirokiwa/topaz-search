@@ -44,8 +44,5 @@ export const openUrl = (url: string) => {
   }
 };
 
-const checkButton = selectQuery.button('#checkButton');
-checkButton?.addEventListener('click', handleSearch);
-
 const inputElement = selectQuery.input("#searchWord");
 inputElement?.addEventListener("keypress", (e: KeyboardEvent) => { e.key === "Enter" && handleSearch()});
