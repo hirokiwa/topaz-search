@@ -35,8 +35,8 @@ const selectQuery = {
 export const openUrl = (url: string) => {
   try {
     window.location.href = url;
-  } catch(e) {
-    console.error(e, "Faild to select query");
+  } catch (e) {
+    console.error(e, "Failed to open URL.");
   }
 }
 
