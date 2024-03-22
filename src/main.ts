@@ -4,20 +4,16 @@ const handleSearch = () => {
   url && openUrl(url);
 };
 
-export const createUrl = (inputValue: string) =>
-  isEmptyString(inputValue) ? undefined : applyQueryToUrl(inputValue);
-
 const getInputValue = () => {
   const inputElement = selectQuery.input("#nameText");
   return inputElement?.value ?? "";
 };
 
-export const isEmptyString = (input: string) => input.trim() === "";
-
-export const applyQueryToUrl = (searchWord: string) => {
-  const encodedSearchWord = encodeURI(searchWord);
-  return `https://www.google.com/search?q=${encodedSearchWord}+site%3Atopaz.dev`;
-};
+export const createUrl = (input: string) => {
+  const isEmptyString = input.trim() === "";
+  return isEmptyString ? undefined :
+    `https://www.google.com/search?q=${encodeURI(input)}+site%3Atopaz.dev`;
+}
 
 const selectQuery = {
   input: (selector: string) => {
