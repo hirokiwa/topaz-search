@@ -5,7 +5,7 @@ const handleSearch = () => {
 };
 
 const getInputValue = () => {
-  const inputElement = selectQuery.input("#nameText");
+  const inputElement = selectQuery.input("#searchWord");
   return inputElement?.value ?? "";
 };
 
