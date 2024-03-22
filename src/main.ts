@@ -1,10 +1,14 @@
 import './style.css'
 
 const handleSearch = () => {
-  const nameText = selectQuery.input("#nameText");
-  const inputValue = nameText?.value ?? "";
+  const inputValue = getInputValue();
   const url = isEmptyString(inputValue) ? undefined : createUrl(inputValue);
   url && openUrl(url);
+}
+
+const getInputValue = () => {
+  const inputElement = selectQuery.input("#nameText");
+  return inputElement?.value ?? "";
 }
 
 export const isEmptyString = (input: string) => input.trim() === "";
