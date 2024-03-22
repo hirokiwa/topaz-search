@@ -71,7 +71,7 @@ describe('openUrl function', () => {
         hostname: '',
       },
     });
-    openUrl("https://example.com");
+    expect(openUrl("https://example.com")).toEqual("https://example.com");
     expect(window.location.href).toEqual("https://example.com");
   });
 
@@ -80,6 +80,6 @@ describe('openUrl function', () => {
       configurable: true,
       get: () => { throw new Error('Failed to open URL'); }
     });
-    expect(() => openUrl("https://example.com")).toThrow();
+    expect(openUrl("https://example.com")).toBeUndefined();
   });
 });

@@ -35,8 +35,10 @@ const selectQuery = {
 export const openUrl = (url: string) => {
   try {
     window.location.href = url;
+    return url;
   } catch (e) {
     console.error(e, "Failed to open URL.");
+    return undefined;
   }
 }
 
