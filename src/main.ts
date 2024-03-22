@@ -4,7 +4,7 @@ const handleSearch = () => {
   url && openUrl(url);
 }
 
-const createUrl = (inputValue: string) => 
+export const createUrl = (inputValue: string) => 
   isEmptyString(inputValue) ? undefined : applyQueryToUrl(inputValue);
 
 const getInputValue = () => {
