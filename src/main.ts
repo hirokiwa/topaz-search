@@ -1,5 +1,3 @@
-import './style.css'
-
 const handleSearch = () => {
   const inputValue = getInputValue();
   const url = isEmptyString(inputValue) ? undefined : createUrl(inputValue);
