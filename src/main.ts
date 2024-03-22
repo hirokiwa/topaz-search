@@ -1,8 +1,11 @@
 const handleSearch = () => {
   const inputValue = getInputValue();
-  const url = isEmptyString(inputValue) ? undefined : applyQueryToUrl(inputValue);
+  const url = createUrl(inputValue);
   url && openUrl(url);
 }
+
+const createUrl = (inputValue: string) => 
+  isEmptyString(inputValue) ? undefined : applyQueryToUrl(inputValue);
 
 const getInputValue = () => {
   const inputElement = selectQuery.input("#nameText");
