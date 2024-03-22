@@ -8,7 +8,7 @@ const handleSearch = () => {
 }
 
 export const isEmptyString = (input: string) => input.trim() === "";
-const createUrl = (searchWord: string) => {
+export const createUrl = (searchWord: string) => {
   const encodedSearchWord = encodeURI(searchWord);
   return `https://www.google.com/search?q=${encodedSearchWord}+site%3Atopaz.dev`
 };
