@@ -34,7 +34,6 @@ describe('isEmptyString function', () => {
   });
 });
 
-
 describe('createUrl function', () => {
   it('should generate the correct URL with a search word', () => {
     const searchWord = 'test';
