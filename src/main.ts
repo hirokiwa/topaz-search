@@ -1,6 +1,6 @@
 const handleSearch = () => {
   const inputValue = getInputValue();
-  const url = isEmptyString(inputValue) ? undefined : createUrl(inputValue);
+  const url = isEmptyString(inputValue) ? undefined : applyQueryToUrl(inputValue);
   url && openUrl(url);
 }
 
@@ -10,7 +10,7 @@ const getInputValue = () => {
 }
 
 export const isEmptyString = (input: string) => input.trim() === "";
-export const createUrl = (searchWord: string) => {
+export const applyQueryToUrl = (searchWord: string) => {
   const encodedSearchWord = encodeURI(searchWord);
   return `https://www.google.com/search?q=${encodedSearchWord}+site%3Atopaz.dev`
 };
