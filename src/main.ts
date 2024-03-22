@@ -7,7 +7,7 @@ const handleSearch = () => {
   url && openUrl(url);
 }
 
-const isEmptyString = (input: string) => input.trim() === "";
+export const isEmptyString = (input: string) => input.trim() === "";
 const createUrl = (searchWord: string) => `https://www.google.com/search?q=${searchWord}+site%3Atopaz.dev`;
 
 const selectQuery = {
