@@ -32,7 +32,7 @@ const selectQuery = {
   },
 }
 
-const openUrl = (url: string) => {
+export const openUrl = (url: string) => {
   try {
     window.location.href = url;
   } catch(e) {

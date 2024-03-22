@@ -1,4 +1,4 @@
-import { createUrl, isEmptyString } from "./main";
+import { createUrl, isEmptyString, openUrl } from "./main";
 
 describe('isEmptyString function', () => {
   it('should return true for an empty string', () => {
@@ -58,5 +58,29 @@ describe('createUrl function', () => {
     const searchWord = '';
     const expectedUrl = 'https://www.google.com/search?q=+site%3Atopaz.dev';
     expect(createUrl(searchWord)).toBe(expectedUrl);
+  });
+});
+
+describe('openUrl function', () => {
+  it('open passed url', () => {
+    global.window = Object.create(window);
+    Object.defineProperty(window, 'location', {
+      value: {
+        href: '',
+        pathname: '/',
+        search: '',
+        hostname: '',
+      },
+    });
+    openUrl("https://example.com");
+    expect(window.location.href).toEqual("https://example.com");
+  });
+
+  it('should handle errors and throw them with a new Error object', () => {
+    Object.defineProperty(window.location, 'href', {
+      configurable: true,
+      get: () => { throw new Error('Failed to open URL'); }
+    });
+    expect(() => openUrl("https://example.com")).toThrow();
   });
 });
