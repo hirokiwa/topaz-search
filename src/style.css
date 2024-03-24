@@ -35,7 +35,7 @@
   position:relative;
 }
 
-.material-symbols-outlined {
+.searchIcon {
   position:absolute;
   top: 50%;
   transform:translateY(-50%) translateX(50%);
