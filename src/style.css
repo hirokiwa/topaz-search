@@ -29,6 +29,13 @@
   transform:translateY(-50%) translateX(50%);
 }
 
+
+.topWrapper {
+  text-align: center;
+}
+
+.topTitle {
+}
 a {
   font-weight: 500;
   color: #646cff;
