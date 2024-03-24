@@ -47,7 +47,12 @@
 }
 
 .topTitle {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
 }
+
 a {
   font-weight: 500;
   color: #646cff;
