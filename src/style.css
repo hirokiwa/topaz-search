@@ -15,6 +15,8 @@
 
 .searchAnnotation {
   opacity: 70%;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .searchInput {
