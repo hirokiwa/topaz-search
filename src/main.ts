@@ -5,7 +5,7 @@ const handleSearch = () => {
 };
 
 const getInputValue = () => {
-  const inputElement = selectQuery.input("#searchWord");
+  const inputElement = selectQuery.input("#topazSearchWord");
   return inputElement?.value ?? "";
 };
 
@@ -44,5 +44,5 @@ export const openUrl = (url: string) => {
   }
 };
 
-const inputElement = selectQuery.input("#searchWord");
+const inputElement = selectQuery.input("#topazSearchWord");
 inputElement?.addEventListener("keypress", (e: KeyboardEvent) => { e.key === "Enter" && handleSearch()});
