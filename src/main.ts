@@ -44,13 +44,5 @@ export const openUrl = (url: string) => {
   }
 };
 
-const openTopaz = () => {
-  const topazUrl = "https://topaz.dev/";
-  openUrl(topazUrl);
-}
-
 const inputElement = selectQuery.input("#topazSearchWord");
 inputElement?.addEventListener("keypress", (e: KeyboardEvent) => { e.key === "Enter" && handleSearch()});
-
-const openTopazButton = selectQuery.button("#openTopaz");
-openTopazButton?.addEventListener("click", openTopaz);
