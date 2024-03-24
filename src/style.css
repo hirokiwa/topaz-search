@@ -22,7 +22,15 @@
   border: none;
   border-radius: 50vmin;
   box-shadow: 0px 0px 3px #787878;
+  width: 35em;
 }
+
+@media (max-width: 700px) {
+  .searchInput {
+    width: 70vw;
+  }
+}
+
 .searchForm {
   position:relative;
 }
