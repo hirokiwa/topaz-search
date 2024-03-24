@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.searchAnnotation {
+  opacity: 70%;
+}
+
 .searchInput {
   padding: 1em 3em;
   border: none;
