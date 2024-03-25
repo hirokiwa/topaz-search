@@ -82,5 +82,7 @@ const clearSearchButtonWrapper = selectQuery.div("#clearSearchButtonWrapper");
 const clearSearchButton = selectQuery.input("#clearSearchButton");
 const inputElement = selectQuery.input("#topazSearchWord");
 
+inputElement?.focus();
+
 inputElement?.addEventListener("keypress", (e: KeyboardEvent) => { e.key === "Enter" && handleSearch()});
 inputElement?.addEventListener('input', handleInputSearchWord);
