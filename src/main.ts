@@ -96,8 +96,8 @@ const replaceSearchParam = (inputValue: string) => {
     history.replaceState('','',newState);
   } catch (e) {
     console.error(e, "Faild to replace state.");
-  }
-}
+  };
+};
 
 const clearSearchButtonWrapper = selectQuery.div("#clearSearchButtonWrapper");
 const clearSearchButton = selectQuery.input("#clearSearchButton");
@@ -114,7 +114,7 @@ const handleKeyDownInput = (e: KeyboardEvent) => {
 const handleKeyDownDoby = (e: KeyboardEvent) => {
   e.key === "/" && inputElement?.focus();
   e.key === "/" && bodyElement?.removeEventListener("keydown", handleKeyDownDoby);
-}
+};
 
 const handleCompositionStart = () => {
   inputElement?.removeEventListener("keydown", handleKeyDownInput);
@@ -132,7 +132,7 @@ const handleFocusSearchInput = () => {
   inputElement?.addEventListener("keydown", handleKeyDownInput);
   inputElement?.addEventListener('input', handleInputSearchWord);
   inputElement?.addEventListener("blur", handleBlurSearchInput, {once: true});
-}
+};
 const handleBlurSearchInput = () => {
   inputElement?.removeEventListener("compositionstart", handleCompositionStart);
   inputElement?.removeEventListener("compositionend", handleCompositionEnd);
@@ -141,11 +141,10 @@ const handleBlurSearchInput = () => {
   inputElement?.removeEventListener('input', handleInputSearchWord);
   inputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
   bodyElement?.addEventListener("keydown", handleKeyDownDoby);
-}
+};
 
 inputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
 inputElement?.focus();
-
 
 const params = new URLSearchParams(document.location.search);
 const currentInput = params.get("q");
@@ -153,6 +152,6 @@ const currentInput = params.get("q");
 if(currentInput && inputElement){
   inputElement.value = currentInput;
   handleActiveClearButton.active();
-}
+};
 
 bodyElement?.addEventListener("keydown", handleKeyDownDoby);
