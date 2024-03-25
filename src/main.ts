@@ -115,3 +115,8 @@ if(currentInput && inputElement){
   inputElement.value = currentInput;
   handleActiveClearButton.active();
 }
+
+const bodyElement = selectQuery.body("#body");
+bodyElement?.addEventListener("keydown", (e: KeyboardEvent) => {
+  e.key === "/" && inputElement?.focus();
+});
