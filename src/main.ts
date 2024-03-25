@@ -105,7 +105,27 @@ const inputElement = selectQuery.input("#topazSearchWord");
 
 inputElement?.focus();
 
-inputElement?.addEventListener("keydown", (e: KeyboardEvent) => {
+const handleKeyDownInputWithoutEnter = (e: KeyboardEvent) => {
+  e.key === "Escape" && inputElement?.blur();
+};
+const handleKeyDownInput = (e: KeyboardEvent) => {
+  e.key === "Enter" && handleSearch();
+  e.key === "Escape" && inputElement?.blur();
+};
+
+const handleCompositionStart = () => {
+  inputElement?.removeEventListener("keydown", handleKeyDownInput);
+  inputElement?.addEventListener("keydown", handleKeyDownInputWithoutEnter);
+  inputElement?.addEventListener("compositionend", handleCompositionEnd, {once: true});
+};
+const handleCompositionEnd = () => {
+  inputElement?.removeEventListener("keydown", handleKeyDownInputWithoutEnter);
+  inputElement?.addEventListener("keydown", handleKeyDownInput);
+  inputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
+};
+
+inputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
+inputElement?.addEventListener("keydown", handleKeyDownInput);
 inputElement?.addEventListener('input', handleInputSearchWord);
 
 const params = new URLSearchParams(document.location.search);
