@@ -41,6 +41,14 @@ const selectQuery = {
       return undefined;
     }
   },
+  body: (selector: string) => {
+    try {
+      return document.querySelector<HTMLBodyElement>(selector) ?? undefined;
+    } catch (e) {
+      console.error(e, "Faild to select query");
+      return undefined;
+    }
+  },
 };
 
 export const openUrl = (url: string) => {
