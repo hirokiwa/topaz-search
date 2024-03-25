@@ -75,8 +75,8 @@ const handleActiveClearButton = {
 
 const handleInputSearchWord = (event: Event) => {
   const target = event.target instanceof HTMLInputElement ? event.target : undefined;
-  const activadeButton = target && target.value !== "";
-  activadeButton ? handleActiveClearButton.active() : handleActiveClearButton.unactive();
+  const activateButton = target && target.value !== "";
+  activateButton ? handleActiveClearButton.active() : handleActiveClearButton.unactive();
 };
 
 const clearSearchButtonWrapper = selectQuery.div("#clearSearchButtonWrapper");
