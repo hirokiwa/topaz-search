@@ -3,6 +3,7 @@ const handleSearch = () => {
   const url = createUrl(inputValue);
   const openedUrl = url && openUrl(url);
   openedUrl && inputElement?.removeEventListener('input', handleInputSearchWord);
+  replaceSearchParam(inputValue);
 };
 
 const getInputValue = () => {
@@ -86,8 +87,6 @@ const handleInputSearchWord = (event: Event) => {
   const target = event.target instanceof HTMLInputElement ? event.target : undefined;
   const activateButton = target && target.value !== "";
   activateButton ? handleActiveClearButton.active() : handleActiveClearButton.unactive();
-  const inputValue = target?.value ?? "";
-  replaceSearchParam(inputValue);
 };
 
 const replaceSearchParam = (inputValue: string) => {
