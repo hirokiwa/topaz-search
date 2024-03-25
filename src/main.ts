@@ -102,8 +102,7 @@ const replaceSearchParam = (inputValue: string) => {
 const clearSearchButtonWrapper = selectQuery.div("#clearSearchButtonWrapper");
 const clearSearchButton = selectQuery.input("#clearSearchButton");
 const inputElement = selectQuery.input("#topazSearchWord");
-
-inputElement?.focus();
+const bodyElement = selectQuery.body("#body");
 
 const handleKeyDownInputWithoutEnter = (e: KeyboardEvent) => {
   e.key === "Escape" && inputElement?.blur();
@@ -112,6 +111,10 @@ const handleKeyDownInput = (e: KeyboardEvent) => {
   e.key === "Enter" && handleSearch();
   e.key === "Escape" && inputElement?.blur();
 };
+const handleKeyDownDoby = (e: KeyboardEvent) => {
+  e.key === "/" && inputElement?.focus();
+  e.key === "/" && bodyElement?.removeEventListener("keydown", handleKeyDownDoby);
+}
 
 const handleCompositionStart = () => {
   inputElement?.removeEventListener("keydown", handleKeyDownInput);
@@ -124,9 +127,25 @@ const handleCompositionEnd = () => {
   inputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
 };
 
-inputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
-inputElement?.addEventListener("keydown", handleKeyDownInput);
-inputElement?.addEventListener('input', handleInputSearchWord);
+const handleFocusSearchInput = () => {
+  inputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
+  inputElement?.addEventListener("keydown", handleKeyDownInput);
+  inputElement?.addEventListener('input', handleInputSearchWord);
+  inputElement?.addEventListener("blur", handleBlurSearchInput, {once: true});
+}
+const handleBlurSearchInput = () => {
+  inputElement?.removeEventListener("compositionstart", handleCompositionStart);
+  inputElement?.removeEventListener("compositionend", handleCompositionEnd);
+  inputElement?.removeEventListener("keydown", handleKeyDownInput);
+  inputElement?.removeEventListener("keydown", handleKeyDownInputWithoutEnter);
+  inputElement?.removeEventListener('input', handleInputSearchWord);
+  inputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
+  bodyElement?.addEventListener("keydown", handleKeyDownDoby);
+}
+
+inputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
+inputElement?.focus();
+
 
 const params = new URLSearchParams(document.location.search);
 const currentInput = params.get("q");
@@ -136,7 +155,4 @@ if(currentInput && inputElement){
   handleActiveClearButton.active();
 }
 
-const bodyElement = selectQuery.body("#body");
-bodyElement?.addEventListener("keydown", (e: KeyboardEvent) => {
-  e.key === "/" && inputElement?.focus();
-});
+bodyElement?.addEventListener("keydown", handleKeyDownDoby);
