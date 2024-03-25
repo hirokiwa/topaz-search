@@ -15,8 +15,6 @@
 
 .searchAnnotation {
   opacity: 70%;
-  word-break: keep-all;
-  overflow-wrap: break-word;
 }
 
 .searchInput {
@@ -90,6 +88,8 @@ body {
   justify-content: center;
   min-height: 100dvh;
   margin: 0;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 h1 {
