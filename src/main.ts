@@ -105,7 +105,7 @@ const inputElement = selectQuery.input("#topazSearchWord");
 
 inputElement?.focus();
 
-inputElement?.addEventListener("keypress", (e: KeyboardEvent) => { e.key === "Enter" && handleSearch()});
+inputElement?.addEventListener("keydown", (e: KeyboardEvent) => {
 inputElement?.addEventListener('input', handleInputSearchWord);
 
 const params = new URLSearchParams(document.location.search);
