@@ -55,6 +55,7 @@ export const openUrl = (url: string) => {
 
 const handleClickClearSearchButton = () => {
   handleActiveClearButton.unactive();
+  replaceSearchParam("");
   inputElement?.focus();
 };
 
@@ -77,7 +78,18 @@ const handleInputSearchWord = (event: Event) => {
   const target = event.target instanceof HTMLInputElement ? event.target : undefined;
   const activateButton = target && target.value !== "";
   activateButton ? handleActiveClearButton.active() : handleActiveClearButton.unactive();
+  const inputValue = target?.value ?? "";
+  replaceSearchParam(inputValue);
 };
+
+const replaceSearchParam = (inputValue: string) => {
+  try {
+    const newState = inputValue === "" ? "/" : `?q=${(inputValue)}`;
+    history.replaceState('','',newState);
+  } catch (e) {
+    console.error(e, "Faild to replace state.");
+  }
+}
 
 const clearSearchButtonWrapper = selectQuery.div("#clearSearchButtonWrapper");
 const clearSearchButton = selectQuery.input("#clearSearchButton");
@@ -87,3 +99,11 @@ inputElement?.focus();
 
 inputElement?.addEventListener("keypress", (e: KeyboardEvent) => { e.key === "Enter" && handleSearch()});
 inputElement?.addEventListener('input', handleInputSearchWord);
+
+const params = new URLSearchParams(document.location.search);
+const currentInput = params.get("q");
+
+if(currentInput && inputElement){
+  inputElement.value = currentInput;
+  handleActiveClearButton.active();
+}
