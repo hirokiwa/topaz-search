@@ -1,7 +1,8 @@
 const handleSearch = () => {
   const inputValue = getInputValue();
   const url = createUrl(inputValue);
-  url && openUrl(url);
+  const openedUrl = url && openUrl(url);
+  openedUrl && inputElement?.removeEventListener('input', handleInputSearchWord);
 };
 
 const getInputValue = () => {
