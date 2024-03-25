@@ -88,6 +88,7 @@ body {
   justify-content: center;
   min-height: 100dvh;
   margin: 0;
+  padding: 0 2em;
   word-break: keep-all;
   overflow-wrap: break-word;
   font-feature-settings: "palt";
