@@ -3,7 +3,7 @@ const handleSearch = () => {
   const url = createUrl(inputValue);
   const openedUrl = url && openUrl(url);
   openedUrl && searchInputElement?.removeEventListener('input', handleInputSearchWord);
-  replaceSearchParam(inputValue);
+  openedUrl && replaceSearchParam(inputValue);
 };
 
 const getInputValue = () => {
