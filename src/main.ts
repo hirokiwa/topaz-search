@@ -14,7 +14,7 @@ const getInputValue = () => {
 export const createUrl = (input: string) => {
   const isEmptyString = input.trim() === "";
   return isEmptyString ? undefined :
-    `https://www.google.com/search?q=${encodeURI(input)}+site%3Atopaz.dev`;
+    `https://www.google.com/search?q=site%3Atopaz.dev+${encodeURI(input)}`;
 }
 
 const selectQuery = {
