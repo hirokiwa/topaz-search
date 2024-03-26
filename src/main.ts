@@ -2,13 +2,13 @@ const handleSearch = () => {
   const inputValue = getInputValue();
   const url = createUrl(inputValue);
   const openedUrl = url && openUrl(url);
-  openedUrl && inputElement?.removeEventListener('input', handleInputSearchWord);
+  openedUrl && searchInputElement?.removeEventListener('input', handleInputSearchWord);
   replaceSearchParam(inputValue);
 };
 
 const getInputValue = () => {
-  const inputElement = selectQuery.input("#topazSearchWord");
-  return inputElement?.value ?? "";
+  const searchInputElement = selectQuery.input("#topazSearchWord");
+  return searchInputElement?.value ?? "";
 };
 
 export const createUrl = (input: string) => {
@@ -65,7 +65,7 @@ export const openUrl = (url: string) => {
 const handleClickClearSearchButton = () => {
   handleActiveClearButton.unactive();
   replaceSearchParam("");
-  inputElement?.focus();
+  searchInputElement?.focus();
 };
 
 const handleActiveClearButton = {
@@ -100,56 +100,56 @@ const replaceSearchParam = (inputValue: string) => {
 
 const clearSearchButtonWrapper = selectQuery.div("#clearSearchButtonWrapper");
 const clearSearchButton = selectQuery.input("#clearSearchButton");
-const inputElement = selectQuery.input("#topazSearchWord");
+const searchInputElement = selectQuery.input("#topazSearchWord");
 const bodyElement = selectQuery.body("#body");
 
 const handleKeyDownInputWithoutEnter = (e: KeyboardEvent) => {
-  e.key === "Escape" && inputElement?.blur();
+  e.key === "Escape" && searchInputElement?.blur();
 };
 const handleKeyDownInput = (e: KeyboardEvent) => {
   e.key === "Enter" && handleSearch();
-  e.key === "Escape" && inputElement?.blur();
+  e.key === "Escape" && searchInputElement?.blur();
 };
 const handleKeyDownDoby = (e: KeyboardEvent) => {
-  e.key === "/" && inputElement?.focus();
+  e.key === "/" && searchInputElement?.focus();
   e.key === "/" && bodyElement?.removeEventListener("keydown", handleKeyDownDoby);
 };
 
 const handleCompositionStart = () => {
-  inputElement?.removeEventListener("keydown", handleKeyDownInput);
-  inputElement?.addEventListener("keydown", handleKeyDownInputWithoutEnter);
-  inputElement?.addEventListener("compositionend", handleCompositionEnd, {once: true});
+  searchInputElement?.removeEventListener("keydown", handleKeyDownInput);
+  searchInputElement?.addEventListener("keydown", handleKeyDownInputWithoutEnter);
+  searchInputElement?.addEventListener("compositionend", handleCompositionEnd, {once: true});
 };
 const handleCompositionEnd = () => {
-  inputElement?.removeEventListener("keydown", handleKeyDownInputWithoutEnter);
-  inputElement?.addEventListener("keydown", handleKeyDownInput);
-  inputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
+  searchInputElement?.removeEventListener("keydown", handleKeyDownInputWithoutEnter);
+  searchInputElement?.addEventListener("keydown", handleKeyDownInput);
+  searchInputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
 };
 
 const handleFocusSearchInput = () => {
-  inputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
-  inputElement?.addEventListener("keydown", handleKeyDownInput);
-  inputElement?.addEventListener('input', handleInputSearchWord);
-  inputElement?.addEventListener("blur", handleBlurSearchInput, {once: true});
+  searchInputElement?.addEventListener("compositionstart", handleCompositionStart, {once: true});
+  searchInputElement?.addEventListener("keydown", handleKeyDownInput);
+  searchInputElement?.addEventListener('input', handleInputSearchWord);
+  searchInputElement?.addEventListener("blur", handleBlurSearchInput, {once: true});
 };
 const handleBlurSearchInput = () => {
-  inputElement?.removeEventListener("compositionstart", handleCompositionStart);
-  inputElement?.removeEventListener("compositionend", handleCompositionEnd);
-  inputElement?.removeEventListener("keydown", handleKeyDownInput);
-  inputElement?.removeEventListener("keydown", handleKeyDownInputWithoutEnter);
-  inputElement?.removeEventListener('input', handleInputSearchWord);
-  inputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
+  searchInputElement?.removeEventListener("compositionstart", handleCompositionStart);
+  searchInputElement?.removeEventListener("compositionend", handleCompositionEnd);
+  searchInputElement?.removeEventListener("keydown", handleKeyDownInput);
+  searchInputElement?.removeEventListener("keydown", handleKeyDownInputWithoutEnter);
+  searchInputElement?.removeEventListener('input', handleInputSearchWord);
+  searchInputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
   bodyElement?.addEventListener("keydown", handleKeyDownDoby);
 };
 
-inputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
-inputElement?.focus();
+searchInputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
+searchInputElement?.focus();
 
 const params = new URLSearchParams(document.location.search);
 const currentInput = params.get("q");
 
-if(currentInput && inputElement){
-  inputElement.value = currentInput;
+if(currentInput && searchInputElement){
+  searchInputElement.value = currentInput;
   handleActiveClearButton.active();
 };
 
