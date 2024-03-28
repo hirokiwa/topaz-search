@@ -29,6 +29,7 @@
 } 
 .searchInput:focus {
   box-shadow: 0px 0px 5px #787878;
+  outline: none;
 }
 
 @media (max-width: 700px) {
