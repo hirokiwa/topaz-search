@@ -111,8 +111,11 @@ const handleKeyDownInput = (e: KeyboardEvent) => {
   e.key === "Escape" && searchInputElement?.blur();
 };
 const handleKeyDownDoby = (e: KeyboardEvent) => {
-  e.key === "/" && searchInputElement?.focus();
-  e.key === "/" && bodyElement?.removeEventListener("keydown", handleKeyDownDoby);
+  if(e.key === "/"){
+    e.preventDefault();
+    bodyElement?.removeEventListener("keydown", handleKeyDownDoby);
+    searchInputElement?.focus();
+  };
 };
 
 const handleCompositionStart = () => {
