@@ -49,8 +49,12 @@
 }
 
 .searchForm {
-  position:relative;
   width: 100%;
+}
+
+.inputWrapper{
+  display: inline flex;
+  position:relative;
 }
 
 .searchIcon {

@@ -26,12 +26,14 @@
   <div class="topWrapper">
     <h1 class="topTitle">Topa'z <wbr>検索くん</h1>
     <form id="searchForm" onsubmit="return false;" class="searchForm">
-      <span class="material-symbols-outlined searchIcon">
-        search
-      </span>
-      <input type="text" id="topazSearchWord" placeholder="Search" title="検索ワード" class="searchInput">
-      <div class="clearSearchButtonWrapper" id="clearSearchButtonWrapper">
-        <input type="reset" value="close" accesskey="r" title="検索ワードをクリア" aria-label="検索ワードをクリア" class="material-symbols-outlined clearSearchButton" id="clearSearchButton">
+      <div class="inputWrapper">
+        <span class="material-symbols-outlined searchIcon">
+          search
+        </span>
+        <input type="text" id="topazSearchWord" placeholder="Search" title="検索ワード" class="searchInput">
+        <div class="clearSearchButtonWrapper" id="clearSearchButtonWrapper">
+          <input type="reset" value="close" accesskey="r" title="検索ワードをクリア" aria-label="検索ワードをクリア" class="material-symbols-outlined clearSearchButton" id="clearSearchButton">
+        </div>
       </div>
     </form>
     <p class="searchAnnotation">直近1ヶ月の記事は<wbr>検索できない可能性があります。</p>
