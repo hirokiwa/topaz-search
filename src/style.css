@@ -15,6 +15,8 @@
 
 .searchAnnotation {
   opacity: 70%;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .searchInput {
@@ -23,6 +25,9 @@
   border-radius: 50vmin;
   box-shadow: 0px 0px 3px #787878;
   width: 35em;
+  font-size: 80%;
+  appearance: none;
+  -webkit-appearance: none;
 }
 .searchInput:hover {
   box-shadow: 0px 0px 5px #787878;
@@ -34,12 +39,18 @@
 
 @media (max-width: 700px) {
   .searchInput {
+    width: 60vw;
+  }
+}
+@media (max-width: 600px) {
+  .searchInput:focus {
     width: 70vw;
   }
 }
 
 .searchForm {
   position:relative;
+  width: 100%;
 }
 
 .searchIcon {
@@ -85,7 +96,7 @@
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
-  margin: 1em 0;
+  margin: 1em;
 }
 
 .topazLink {
@@ -116,7 +127,6 @@ body {
   justify-content: center;
   min-height: 100dvh;
   margin: 0;
-  padding: 0 2em;
   word-break: keep-all;
   overflow-wrap: break-word;
   font-feature-settings: "palt";

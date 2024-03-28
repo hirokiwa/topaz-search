@@ -142,8 +142,16 @@ const handleBlurSearchInput = () => {
   bodyElement?.addEventListener("keydown", handleKeyDownDoby);
 };
 
+const getIsMobileOrTablet = () => {
+  try {
+    return navigator.userAgent.match(/iPhone|iPad|Android.+Mobile/) ?? false;
+  } catch (error) {
+    return false;
+  }
+}
+
 searchInputElement?.addEventListener("focus", handleFocusSearchInput, {once: true});
-searchInputElement?.focus();
+!getIsMobileOrTablet() && searchInputElement?.focus();
 
 const params = new URLSearchParams(document.location.search);
 const currentInput = params.get("q");
